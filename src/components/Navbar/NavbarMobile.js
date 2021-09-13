@@ -15,14 +15,15 @@ function NavbarMobile(props) {
     return (
         <Flex
             w='100vw'
-            // h='83px'
             bg='white'
             position='fixed'
             bottom='0'
             left='0'
             justifyContent='space-around'
             pb='23px'
-            pt='10px'
+            pt='15px'
+            borderTopLeftRadius='25'
+            borderTopRightRadius='25'
         >
             <Link 
                 as={ReactLink} 
@@ -38,7 +39,7 @@ function NavbarMobile(props) {
                 <VStack spacing={0}>
                     <Icon 
                         as={isActiveHome ? AiFillHome : BiHomeAlt} 
-                        boxSize='8'
+                        boxSize='7'
                         color='blue.500' 
                     />
                     <Text 
@@ -67,7 +68,7 @@ function NavbarMobile(props) {
                 <VStack spacing={0}>
                     <Icon 
                         as={isActiveBag ? HiShoppingBag : HiOutlineShoppingBag} 
-                        boxSize='8'
+                        boxSize='7'
                         color='blue.500' 
                     />
                     <Text 
@@ -96,7 +97,7 @@ function NavbarMobile(props) {
                 <VStack spacing={0}>
                     <Icon 
                         as={isActiveProfile ? AiFillHome : BiHomeAlt} 
-                        boxSize='8'
+                        boxSize='7'
                         color='blue.500' 
                     />
                     <Text 

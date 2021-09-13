@@ -7,9 +7,10 @@ function LayoutMobile({ children }) {
     return (
         <Container 
             maxW='container.lg' 
-            bg='gray.200'
+            bg='gray.100'
+            p='0'
             width='100vw'
-            height='100vh'
+            minH='100vh'
             position='relative'
             overflow='hidden'
         >
