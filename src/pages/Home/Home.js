@@ -1,4 +1,4 @@
-import { Flex, Heading, VStack } from "@chakra-ui/layout"
+import { Flex, Heading, VStack, Wrap, WrapItem } from "@chakra-ui/react"
 import HeroHeaderImg from '../../assets/images/hero_header.jpg'
 import CardItem from "../../components/CardItem/CardItem"
 import HeadingFeature from "../../components/HeadingFeature/HeadingFeature"
@@ -51,7 +51,9 @@ const Home = (props) => {
                     alignItems='flex-start'
                 >
                     <HeadingFeature />
-                    <CardItem type='thumbnail' />
+                    <Wrap px='16px'>
+                        <WrapItem><CardItem type='thumbnail' /></WrapItem>
+                    </Wrap>
                 </VStack>
 
             </VStack>

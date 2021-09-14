@@ -11,10 +11,12 @@ function LayoutMobile({ children }) {
             p='0'
             width='100vw'
             minH='100vh'
+            h='auto'
             position='relative'
-            overflow='hidden'
+            overflowX='hidden'
+            overflowY='scroll'
         >
-            <Box w='full' h='full' position='relative'>
+            <Box w='full' h='full' position='relative' pb='190px'>
                 { children }
             </Box>
             <NavbarMobile />

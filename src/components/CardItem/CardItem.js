@@ -1,6 +1,7 @@
 import { Image } from '@chakra-ui/image';
-import { Box, VStack, Tag, Button, Icon } from '@chakra-ui/react';
+import { Box, VStack, Tag, Button, Icon, HStack, Flex, Text } from '@chakra-ui/react';
 import { AiOutlineHeart } from 'react-icons/ai'
+import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 import React from 'react';
 import ItemImg1 from '../../assets/images/sample_item1.png'
 
@@ -47,7 +48,39 @@ const ItemGrid = ({ data, available }) => {
     )
 }
 
+const StarRating = ({ value }) => {
+
+    const max = 10
+    const rating = []
+
+    const FilledIcon = <Icon color='yellow.400' as={BsStarFill} w='3' h='3' />
+    const HalfIcon = <Icon color='yellow.400' as={BsStarHalf} w='3' h='3' />
+    const OuterIcon = <Icon color='gray.400' as={BsStar} w='3' h='3' />
+
+    for (let i = 1; i <= value; i++) {
+        if (i === value && i % 2 !== 0) rating.push(HalfIcon)
+        else if ((i + 2) % 2 === 0 ) rating.push(FilledIcon)
+    }
+
+    const rest = Array(5 - rating.length).fill(OuterIcon)
+    const box = [...rating, ...rest]
+
+    return (
+        <HStack spacing={1}>
+            {box.map((el, id) => (
+                <Box key={id} alignItems='center' alignContent='center'>
+                    {el}
+                </Box>
+            ))}
+        </HStack>
+    )
+}
+
 const ItemThumbnail = ({ data, available }) => {
+
+    // const itemName = 'Evening Dress yosh awesome testing yosh'
+    const itemName = 'Evening Dress'
+    const subStrName = itemName.length > 27 ? itemName.substr(0, 27)+'...' : itemName
 
     return (
         <Box
@@ -83,20 +116,58 @@ const ItemThumbnail = ({ data, available }) => {
                 w='full' 
                 position='relative'
                 h='50px'
+                spacing='0'
                 // bg='white'
             >
                 <Box 
                     position='absolute'
                     right='0'
-                    top='-50%'
+                    top='-45%'
                     z-index='10'
                 >
                     <ButtonLove />
                 </Box>
+                <HStack w='full' spacing='0' textAlign='left'>
+                    <StarRating value={5} />
+                    <Text color='gray.400' fontSize='xs' pl='1' pt='1'>(10)</Text>
+                </HStack>
+                <Text w='full' color='gray.400' fontSize='xs'>Dorothy Perkins</Text>
+                <Text 
+                    w='full' 
+                    h='42px'
+                    color='gray.700' 
+                    fontSize='lg' 
+                    fontWeight='600' 
+                    pt='0' 
+                    lineHeight='1.2'
+                    // overflow='hidden'
+                >
+                    {subStrName}
+                </Text>
+                <HStack w='full' spacing='0'>
+                    <Text
+                        as='del'
+                        fontSize='md'
+                        fontWeight='500'
+                        color='gray.600'
+                    >
+                        15$
+                    </Text>
+                    <Text
+                        fontSize='md'
+                        fontWeight='500'
+                        color='blue.600'
+                        pl='1'
+                    >
+                        10$
+                    </Text>
+                </HStack>
             </VStack>
         </Box>
     )
 }
+
+
 
 function CardItem({ data, type, mode, available = true}) {
     
